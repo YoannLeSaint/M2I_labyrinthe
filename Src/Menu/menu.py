@@ -1,3 +1,5 @@
+from sys import exit
+
 # from Generation.generator import Generator
 # from Recursive.maze import Maze
 # from Save.save import Backup
@@ -43,6 +45,7 @@ class Menu(object):
                     print("Bye !")
                     exit(0)
                 case _:
+                    print("Please choose a valid option :)")
                     self.display_menu()
 
 
