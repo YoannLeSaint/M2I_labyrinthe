@@ -9,12 +9,12 @@ Ces cartes / fichiers seront positionné.e.s  dans un dossier "carte" à la raci
 
 Règles de construction des cartes :
 --------------------------------------
-Les contours de la carte ainsi que les murs sont en "#" 
+Les contours de la carte ainsi que les murs sont en "#"
 il doit y avoir 2 zones ouvertes sur la carte : l'entrée et la sortie.
 Une carte à une taille aléatoire.
 
 
-Le quand le jeu démarre : 
+Le quand le jeu démarre :
 Un menu se présente :
 
 Voir l'historique
@@ -23,7 +23,7 @@ Quitter
 
 Quand on sélectionne 1 :
 ----------------------------
-Affiche l'historique des résolutions de labyrinthe au format 
+Affiche l'historique des résolutions de labyrinthe au format
 <nom fichier>; <date de résolution>; <temps pour résoudre le labyrinthe>
 =====> BDD
 
