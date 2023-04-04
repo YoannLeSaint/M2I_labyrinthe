@@ -47,7 +47,7 @@ You need to have an environment who can **compile Pyhton files**.
 **Terminal :**
 
 ```
-python __start__.py
+python3 __start__.py
 ```
 
 **IDE :**

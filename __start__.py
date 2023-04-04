@@ -1,9 +1,8 @@
-from Src.Recursive.maze import Maze
-
+from Src.Menu.menu import Menu
 
 def main():
-    m = Maze("maze_1.txt")
-    print(m.maze)
+    m = Menu()
+    m.launch_game()
 
 
 if __name__ == "__main__":
