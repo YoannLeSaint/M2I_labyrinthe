@@ -7,6 +7,7 @@
 
 from numpy import array, shape
 import os
+import shutil
 
 path = os.getcwd()
 path_maps = "/".join(path.split("/")[:-1] + ["maps"])
@@ -15,16 +16,16 @@ path_maps = "/".join(path.split("/")[:-1] + ["maps"])
 class Maze(object):
 
     def __init__(self, maze_name):
-        self._maze_path = "\\".join(path.split("\\") + ["maps"])
+        self._maze_folder = "\\".join(path.split("\\") + ["maps"])
+        self._maze_path = self._maze_folder + '\\' + maze_name
 
-        maze = self._maze_path + '\\' + maze_name
-        with open(maze, 'r') as f:
+        with open(self._maze_path, 'r') as f:
             mat = f.readlines()
             mat = [[lign[:-2]] for lign in mat]
         self._maze = array(mat)
 
         self.start = (0, 0)
-        self.end   = shape(self._maze)
+        self.end = shape(self._maze)
 
 
     def print_maze(self):
@@ -46,28 +47,24 @@ class Maze(object):
     def len(self):
         return len(self._maze), len(self._maze[0])
 
+    def solve(self):
+        return self.solve_recursive(self.start)
 
     def solve_recursive(self, state):
         x, y = state
         if state == self.end:
             return True
-        elif self._maze[x, y] != " ":
+        if self._maze[x, y] != " ":
             return False
-        elif (x > 0 and self)
+        self._maze[y] = self._maze[:x, y] + 'X' + self._maze[x+1:, y]
+        if (x > 0 and self.solve_recursive((x - 1, y))) \
+            or (x < len(self._maze[y]) - 1 and self.solve_recursive((x + 1, y))) \
+            or (y > 0 and self.solve_recursive((x, y - 1))) \
+            or (y < len(self._maze) - 1 and self.solve_recursive((x, y + 1))):
+            return True
+        return False
 
-    # def solve(self):
-    #     return self._solve_recursive(self.start)
-    #
-    # def _solve_recursive(self, current):
-    #     x, y = current
-    #     if current == self.end:
-    #         return True
-    #     if self.map_data[y][x] != " ":
-    #         return False
-    #     self.map_data[y] = self.map_data[y][:x] + "." + self.map_data[y][x + 1:]
-    #     if (x > 0 and self._solve_recursive((x - 1, y))) \
-    #             or (x < len(self.map_data[y]) - 1 and self._solve_recursive((x + 1, y))) \
-    #             or (y > 0 and self._solve_recursive((x, y - 1))) \
-    #             or (y < len(self.map_data) - 1 and self._solve_recursive((x, y + 1))):
-    #         return True
-    #     return False
+
+    def move(self, new_path):
+        # ajout commande SQL
+        shutil.move(self._maze_path, new_path)
