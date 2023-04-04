@@ -22,7 +22,7 @@ This project aims to implement **mazes resolution algorithms**.
 
 * Walls "#"
 * Empty " "
-* Was here "X"
+* Path "X"
 * One start / end
 
 #### Game Menu
