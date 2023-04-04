@@ -15,9 +15,30 @@ This project aims to implement **mazes resolution algorithms**.
 * Unsolved mazes are in a root directory named **Unsolved**
 * Solved mazes are in a root directory named **Solved**
 * All sources are in a root directory named **Src**
-* Integrate **POO** to the project
-* Use **Sqlite3** to save **date**, **time** and **name** of the maze solved
-* 
+* Use **Sqlite3**
+* A **Game Menu**
+
+#### Mazes
+
+* Walls "#"
+* Empty " "
+* Was here "X"
+* One start / end
+
+#### Game Menu
+
+* Option 1 :
+  * Display data form the solved mazes
+  * Format :  `<file_name>; <date>; <time>`
+* Option 2 :
+  * Load randomly 1 maze form the **Unsolved** diretory and solved it
+  * Display the maze solution
+  * Save the **Date, Time** and **Name** of the maze solved
+  * Move the maze into the **Solved** directory
+* Option 3 :
+  * Generate a maze with **X** and **Y** given as args and place it into the **Unsolved** directory
+* Option 4 :
+  * Exit game
 
 ## Build
 
