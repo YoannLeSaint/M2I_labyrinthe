@@ -4,14 +4,15 @@
         <img src="https://img.shields.io/badge/Python-3.11.2-4483B5" /></a>
 <a href="https://img.shields.io/badge/pip-23.0.1-FFE05B" alt="NPM">
         <img src="https://img.shields.io/badge/pip-23.0.1-FFE05B" /></a>
+<a href="https://img.shields.io/badge/MADE%20WITH-SQLite3-183866" alt="NPM">
+        <img src="https://img.shields.io/badge/MADE%20WITH-SQLite3-183866" /></a>
 
 ---
 
-This project aims to implement **mazes resolution algorithms**.
+This project aims to implement **mazes resolution algorithms** and **maze generator**.
 
 ## Mandatories
 
-* Create maze in **.txt** extention
 * Unsolved mazes are in a root directory named **Unsolved**
 * Solved mazes are in a root directory named **Solved**
 * All sources are in a root directory named **Src**
@@ -21,26 +22,27 @@ This project aims to implement **mazes resolution algorithms**.
 #### Mazes
 
 * Walls "#"
-* Empty " "
+* Empty spaces " "
 * Path "X"
-* One start / end
+* One start : (0, 0)
+* One end : (max_length, -max_hight)
 
 #### Game Menu
 
 * Option 1 :
-  * Display data form the solved mazes
+  * Display solved mazes datas from the SQL database
   * Format :  `<file_name>; <date>; <time>`
 * Option 2 :
-  * Load randomly 1 maze form the **Unsolved** diretory and solved it
+  * Load randomly 1 maze form the **Unsolved** directory and solve it
   * Display the maze solution
   * Save the **Date, Time** and **Name** of the maze solved
   * Move the maze into the **Solved** directory
 * Option 3 :
-  * Generate a maze with **X** and **Y** given as args and place it into the **Unsolved** directory
+  * Generate a maze.txt with **X** and **Y** given as arguments and place it into the **Unsolved** directory
 * Option 4 :
   * Exit game
 
-## Build
+## Run project
 
 You need to have an environment who can **compile Pyhton files**.
 
@@ -52,7 +54,7 @@ python3 __start__.py
 
 **IDE :**
 
-run into your IDE
+> run into your IDE the file \_\_start\_\_.py
 
 ## Authors
 
