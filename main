@@ -1,0 +1,13 @@
+#!/usr/bin/python3.11
+# -*- conding utf -8 -8-
+
+from solve.maze import Maze
+
+
+def main():
+    m = Maze("maze_1.txt")
+    m.print_maze()
+
+
+if __name__ == "__main__":
+    main()
