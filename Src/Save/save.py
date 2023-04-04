@@ -40,17 +40,27 @@ class Save(object):
         for row in rows:
             print(row)
 
+    def delete(self):
+        cur = self.conn.cursor()
+        cur.execute(''' DROP TABLE IF EXISTS archive ''')
+        self.creation_save()
+
+
+
     def close(self):
         self.conn.close()
 
 
 
 
-t1 = time.time()-start
-print(t1)
-
-table = Save()
-table.add_solved(("maze_1", datetime.date.today(), t1))
-table.add_solved(("maze_2", datetime.date.today(), t1+1))
-table.display_database()
+# t1 = time.time()-start
+# print(t1)
+#
+# table = Save()
+# table.add_solved(("maze_1", datetime.date.today(), t1))
+# table.add_solved(("maze_2", datetime.date.today(), t1+1))
+# table.display_database()
+# table.delete()
+# print('_________________')
+# table.display_database()
 # table.close()

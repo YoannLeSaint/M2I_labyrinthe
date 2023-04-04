@@ -139,6 +139,8 @@ class Maze:
         # ajout commande SQL
         shutil.move(self._maze_path, new_path)
 
+
+
     def print_maze(self):
         print('print : ')
         print(self._maze)
