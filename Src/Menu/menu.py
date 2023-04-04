@@ -1,8 +1,8 @@
 from sys import exit
 
+from Src.Save.save import Save
 # from Generation.generator import Generator
 # from Recursive.maze import Maze
-# from Save.save import Backup
 
 class Menu(object):
 
@@ -12,10 +12,14 @@ class Menu(object):
         self._width_generation = 0
 
     def __str__(self) -> str:
-        return f'The option is {self._option}'
+        return f'Option : {self._option}, \
+                Lenght_generation : {self._lenght_generation}, \
+                Width_generation : {self._width_generation}'
 
     def __repr__(self) -> str:
-        return f'Menu(\'{self._option})'
+        return f'Menu(\'{self._option}\', \
+                        {self._lenght_generation}\', \
+                        {self._width_generation})'
 
     def display_menu(self) -> None:
          print("\nMENU :\n"
@@ -33,7 +37,7 @@ class Menu(object):
             self._option = input()
             match self._option:
                 case '1':
-                    # Backup.display_data()
+                    # Save.display_database()
                     self.launch_game()
                 case '2':
                     # Maze.solve_recursive()

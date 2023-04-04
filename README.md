@@ -44,7 +44,7 @@ This project aims to implement **mazes resolution algorithms** and **maze genera
 
 ## Run project
 
-You need to have an environment who can **compile Pyhton files**.
+You need to be on **Windows** for pathfinding and to have an environment who can **compile Pyhton files**.
 
 **Terminal :**
 
