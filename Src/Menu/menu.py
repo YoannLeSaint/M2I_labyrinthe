@@ -31,17 +31,14 @@ class Menu(object):
             self._option = input()
             match self._option:
                 case '1':
-                    print("1")
-                    self.launch_game()
                     # Backup.display_data()
+                    self.launch_game()
                 case '2':
-                    print("2")
-                    self.launch_game()
                     # Maze.solve_recursive()
-                case '3':
-                    print("3")
                     self.launch_game()
+                case '3':
                     # Generator.generate_maze()
+                    self.launch_game()
                 case '4':
                     print("Bye !")
                     exit(0)
