@@ -9,13 +9,11 @@ class Save(object):
 
     def __init__(self):
         self.conn = self.creation_save()
-        self.conn.close()
-
     def creation_save(self):
         try:
             conn = sqlite3.connect('archive.sqlite')
             cur = conn.cursor()
-            cur.execute(''' DROP TABLE IF EXISTS archive ''')
+            #cur.execute(''' DROP TABLE IF EXISTS archive ''')
             cur.execute(''' CREATE TABLE IF NOT EXISTS archive(
                                 id INT PRIMARY KEY,
                                 file_name TEXT,
@@ -26,24 +24,21 @@ class Save(object):
             print(e)
 
     def add_solved(self, task):
-        con = sqlite3.connect('archive.sqlite')
         sql = ''' INSERT INTO archive(file_name, date_solved, time_execute)
                     VALUES (?,?,?)'''
-        cur = con.cursor()
+        cur = self.conn.cursor()
         cur.execute(sql, task)
-        con.commit()
-        con.close()
+        self.conn.commit()
+        return cur.lastrowid
 
     def display_database(self):
-        con = sqlite3.connect('archive.sqlite')
-        sql = ''' SELECT * FROM archive '''
-        cur = con.cursor()
+        print("Mazes database")
+        sql = ''' SELECT file_name, date_solved, time_execute FROM archive '''
+        cur = self.conn.cursor()
         cur.execute(sql)
-        cur.execute(''' INSERT INTO archive VALUES (1, 'dqzdqzqzd', '21/01/2023', 0.2)''')
         rows = cur.fetchall()
         for row in rows:
             print(row)
-        con.close()
 
     def close(self):
         self.conn.close()
@@ -51,9 +46,11 @@ class Save(object):
 
 
 
-# t1 = time.time()-start
-# print(t1)
-#
-# table = Save()
-# table.display_database()
-# table.add_solved(("maze_1", datetime.date.today(), t1))
+t1 = time.time()-start
+print(t1)
+
+table = Save()
+table.add_solved(("maze_1", datetime.date.today(), t1))
+table.add_solved(("maze_2", datetime.date.today(), t1+1))
+table.display_database()
+# table.close()
