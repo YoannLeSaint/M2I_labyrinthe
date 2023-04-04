@@ -23,9 +23,9 @@ This project aims to implement **mazes resolution algorithms** and **maze genera
 
 * Walls "#"
 * Empty spaces " "
-* Path "X"
+* Path "o"
 * One start : (0, 0)
-* One end : (max_length, -max_hight)
+* One end : (row, column)
 
 #### Game Menu
 

@@ -1,14 +1,20 @@
+# System import(s)
 import sqlite3
 import time, datetime
 
 
+# Define global variable(s)
 start = time.time()
 
 
 class Save(object):
 
+    # Initialization
     def __init__(self):
         self.conn = self.creation_save()
+
+
+    # Methods
     def creation_save(self):
         try:
             conn = sqlite3.connect('archive.sqlite')
@@ -23,6 +29,7 @@ class Save(object):
         except IOError as e:
             print(e)
 
+
     def add_solved(self, task):
         sql = ''' INSERT INTO archive(file_name, date_solved, time_execute)
                     VALUES (?,?,?)'''
@@ -30,6 +37,7 @@ class Save(object):
         cur.execute(sql, task)
         self.conn.commit()
         return cur.lastrowid
+
 
     def display_database(self):
         print("Mazes database")
@@ -40,11 +48,11 @@ class Save(object):
         for row in rows:
             print(row)
 
+
     def delete(self):
         cur = self.conn.cursor()
         cur.execute(''' DROP TABLE IF EXISTS archive ''')
         self.creation_save()
-
 
 
     def close(self):

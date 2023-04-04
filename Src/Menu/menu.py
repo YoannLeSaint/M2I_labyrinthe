@@ -1,35 +1,38 @@
+# System imports
 from sys import exit
 
+# Local imports
 from ..Save.save import Save
-# from Generation.generator import Generator
-# from Recursive.maze import Maze
+from ..Generator.generator import Generator
+from ..Maze_Solver.recursive import Recursive
+
 
 class Menu(object):
 
+    # Initialization
     def __init__(self) -> None:
         self._option = 0
-        self._lenght_generation = 0
-        self._width_generation = 0
+
 
     def __str__(self) -> str:
-        return f'Option : {self._option}, \
-                Lenght_generation : {self._lenght_generation}, \
-                Width_generation : {self._width_generation}'
+        return f'Option : {self._option}'
+
 
     def __repr__(self) -> str:
-        return f'Menu(\'{self._option}\', \
-                        {self._lenght_generation}\', \
-                        {self._width_generation})'
+        return f'Menu(\'{self._option}\')'
 
+
+    # Methods
     def display_menu(self) -> None:
          print("\nMENU :\n"
                "---------------------------\n"
                "1 : Diplay all solved mazes\n"
-               "2 : Load random maze\n"
+               "2 : Solve random maze -> recursive\n"
                "3 : Generate new maze\n"
                "4 : Exit\n"
                "---------------------------\n"
                "Your Choice : ", end = '')
+
 
     def launch_game(self):
         self.display_menu()
@@ -41,9 +44,11 @@ class Menu(object):
                     save.display_database()
                     self.launch_game()
                 case '2':
-                    # Maze.solve_recursive()
+                    recursive = Recursive()
+                    recursive.display_path()
                     self.launch_game()
                 case '3':
+                    print("No generator for the moment... :(")
                     # Generator.generate_maze()
                     self.launch_game()
                 case '4':
@@ -52,5 +57,3 @@ class Menu(object):
                 case _:
                     print("Please choose a valid option :)")
                     self.display_menu()
-
-
