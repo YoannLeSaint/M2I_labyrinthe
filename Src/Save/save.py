@@ -3,11 +3,14 @@ import time, datetime
 
 
 start = time.time()
-class Backup():
+
+
+class Save(object):
 
     def __init__(self):
         self.conn = self.creation_save()
         self.conn.close()
+
     def creation_save(self):
         try:
             conn = sqlite3.connect('archive.sqlite')
@@ -17,7 +20,7 @@ class Backup():
                                 id INT PRIMARY KEY,
                                 file_name TEXT,
                                 date_solved DATE
-                                time_execute REAL);''')
+                                time_to_solve REAL);''')
             return conn
         except IOError as e:
             print(e)
@@ -31,7 +34,7 @@ class Backup():
         con.commit()
         con.close()
 
-    def display_solve(self):
+    def display_database(self):
         con = sqlite3.connect('archive.sqlite')
         sql = ''' SELECT * FROM archive '''
         cur = con.cursor()
@@ -47,6 +50,6 @@ class Backup():
 t1 = time.time()-start
 print(t1)
 
-table = Backup()
+table = Save()
 table.display_solve()
 table.add_solved(("maze_1", datetime.date.today(), t1))
