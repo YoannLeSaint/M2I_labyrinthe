@@ -19,8 +19,8 @@ class Save(object):
             cur.execute(''' CREATE TABLE IF NOT EXISTS archive(
                                 id INT PRIMARY KEY,
                                 file_name TEXT,
-                                date_solved DATE
-                                time_to_solve REAL);''')
+                                date_solved DATE,
+                                time_execute REAL);''')
             return conn
         except IOError as e:
             print(e)
@@ -39,6 +39,7 @@ class Save(object):
         sql = ''' SELECT * FROM archive '''
         cur = con.cursor()
         cur.execute(sql)
+        cur.execute(''' INSERT INTO archive VALUES (1, 'dqzdqzqzd', '21/01/2023', 0.2)''')
         rows = cur.fetchall()
         for row in rows:
             print(row)
@@ -47,9 +48,12 @@ class Save(object):
     def close(self):
         self.conn.close()
 
-t1 = time.time()-start
-print(t1)
 
-table = Save()
-table.display_solve()
-table.add_solved(("maze_1", datetime.date.today(), t1))
+
+
+# t1 = time.time()-start
+# print(t1)
+#
+# table = Save()
+# table.display_database()
+# table.add_solved(("maze_1", datetime.date.today(), t1))
