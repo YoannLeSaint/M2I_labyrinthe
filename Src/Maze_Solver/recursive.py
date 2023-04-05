@@ -78,5 +78,5 @@ class Recursive(object):
         self.solve_maze(maze, 0, 0)
         for row in maze:
             print(''.join(row))
-        self.write_path()
+        # self.write_path()
         self.move_maze()
