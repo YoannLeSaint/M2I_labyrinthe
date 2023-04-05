@@ -1,5 +1,5 @@
 # System import(s)
-
+import random
 
 # Local import(s)
 
@@ -21,3 +21,5 @@ class Generator(object):
 
 
     # Methods
+    def generate_maze(width, height):
+        pass

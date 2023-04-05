@@ -1,5 +1,7 @@
 # System import(s)
-import os, random
+import os
+import random
+import shutil
 
 from numpy import array
 
@@ -57,7 +59,18 @@ class Recursive(object):
         if row > 0 and self.solve_maze(maze, row-1, col):
             return True
         maze[row][col] = ' '
+        self._maze = maze
         return False
+
+
+    def write_path(self):
+        with open(self._maze_path, 'w') as file:
+            for row in self._maze:
+                file.write(row)
+
+
+    def move_maze(self):
+        shutil.move(self._maze_path, './Solved/')
 
 
     def display_path(self):
@@ -65,3 +78,5 @@ class Recursive(object):
         self.solve_maze(maze, 0, 0)
         for row in maze:
             print(''.join(row))
+        self.write_path()
+        self.move_maze()

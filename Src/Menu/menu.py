@@ -2,7 +2,7 @@
 from sys import exit
 
 # Local imports
-from ..Save.save import Save
+# from ..Save.save import Save
 from ..Generator.generator import Generator
 from ..Maze_Solver.recursive import Recursive
 
@@ -40,8 +40,8 @@ class Menu(object):
             self._option = input()
             match self._option:
                 case '1':
-                    save = Save()
-                    save.display_database()
+                    # save = Save()
+                    # save.display_database()
                     self.launch_game()
                 case '2':
                     recursive = Recursive()
