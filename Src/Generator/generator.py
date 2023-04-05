@@ -54,9 +54,11 @@ class Generator(object):
         maze[end[0]][end[1]] = ' '
         maze[0][0] = ' '
         maze[0][1] = ' '
+        maze[1][0] = ' '
         maze[1][1] = ' '
         maze[-2][-2] = ' '
         maze[-1][-2] = ' '
+        maze[-2][-1] = ' '
         maze[-1][-1] = ' '
         maze_str = '\n'.join([''.join(row) for row in maze])
         self._maze = maze_str
