@@ -12,14 +12,17 @@ class Menu(object):
     # Initialization
     def __init__(self) -> None:
         self._option = 0
+        self._id_txt = 4
 
 
     def __str__(self) -> str:
-        return f'Option : {self._option}'
+        return f'Option : {self._option}, \
+                Id .txt : {self._id_txt}'
 
 
     def __repr__(self) -> str:
-        return f'Menu(\'{self._option}\')'
+        return f'Menu(\'{self._option}\', \
+                        {self._id_txt})'
 
 
     # Methods
@@ -48,8 +51,9 @@ class Menu(object):
                     recursive.display_path()
                     self.launch_game()
                 case '3':
-                    print("No generator for the moment... :(")
-                    # Generator.generate_maze()
+                    generator = Generator()
+                    generator.generator(self._id_txt)
+                    self._id_txt += 1
                     self.launch_game()
                 case '4':
                     print("Bye !")

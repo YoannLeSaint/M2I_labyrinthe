@@ -5,13 +5,18 @@ import shutil
 
 from numpy import array
 
+# Local import(s)
+
 
 class Recursive(object):
 
     # Initialization
     def __init__(self) -> None:
-        self._maze_name = random.choice(os.listdir('./Unsolved/'))
-        self._maze_path = './Unsolved/' + self._maze_name
+        if not os.listdir("./Unsolved/"):
+            self._maze_name = "empty"
+        else:
+            self._maze_name = random.choice(os.listdir("./Unsolved/"))
+        self._maze_path = "./Unsolved/" + self._maze_name
         self._maze = []
         self._rows = 0
         self._columns = 0
@@ -59,24 +64,32 @@ class Recursive(object):
         if row > 0 and self.solve_maze(maze, row-1, col):
             return True
         maze[row][col] = ' '
-        self._maze = maze
         return False
 
 
-    def write_path(self):
+    def write_solution(self):
         with open(self._maze_path, 'w') as file:
             for row in self._maze:
-                file.write(row)
-
+                for c in row:
+                    file.write(c)
+                file.write('\n')
 
     def move_maze(self):
-        shutil.move(self._maze_path, './Solved/')
+        if not os.path.exists("./Solved/" + self._maze_name):
+            shutil.move(self._maze_path, "./Solved/")
+        else:
+            os.remove(self._maze_path)
+            print("\nMaze is already solved, so I deleted it in the 'Unsoved' directory :)")
 
 
     def display_path(self):
-        maze = self.get_maze()
-        self.solve_maze(maze, 0, 0)
-        for row in maze:
-            print(''.join(row))
-        # self.write_path()
-        self.move_maze()
+        if (self._maze_name != "empty"):
+            maze = self.get_maze()
+            self._maze = maze
+            self.solve_maze(maze, 0, 0)
+            for row in maze:
+                print(''.join(row))
+            self.write_solution()
+            self.move_maze()
+        else:
+            print("\nThere is no maze. Generate some first :)")

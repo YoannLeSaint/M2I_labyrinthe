@@ -2,6 +2,8 @@
 import sqlite3
 import time, datetime
 
+# Local import(s)
+
 
 # Define global variable(s)
 start = time.time()
@@ -10,8 +12,16 @@ start = time.time()
 class Save(object):
 
     # Initialization
-    def __init__(self):
-        self.conn = self.creation_save()
+    def __init__(self) -> None:
+        self._conn = self.creation_save()
+
+
+    def __str__(self) -> str:
+        return f'Maze name : {self._conn}'
+
+
+    def __repr__(self) -> str:
+        return f'Save(\'{self._conn})'
 
 
     # Methods
@@ -33,16 +43,16 @@ class Save(object):
     def add_solved(self, task):
         sql = ''' INSERT INTO archive(file_name, date_solved, time_execute)
                     VALUES (?,?,?)'''
-        cur = self.conn.cursor()
+        cur = self._conn.cursor()
         cur.execute(sql, task)
-        self.conn.commit()
+        self._conn.commit()
         return cur.lastrowid
 
 
     def display_database(self):
         print("Mazes database")
         sql = ''' SELECT file_name, date_solved, time_execute FROM archive '''
-        cur = self.conn.cursor()
+        cur = self._conn.cursor()
         cur.execute(sql)
         rows = cur.fetchall()
         for row in rows:
@@ -50,13 +60,13 @@ class Save(object):
 
 
     def delete(self):
-        cur = self.conn.cursor()
+        cur = self._conn.cursor()
         cur.execute(''' DROP TABLE IF EXISTS archive ''')
         self.creation_save()
 
 
     def close(self):
-        self.conn.close()
+        self._conn.close()
 
 
 
